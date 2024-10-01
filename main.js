@@ -1,6 +1,5 @@
 
 //declaracion de arrays y objetos
-
 const carrito = [];
 class Articulo {
   constructor(nombre, precio, stock, stockCompra, subtotal){
@@ -14,7 +13,6 @@ class Articulo {
     return "Disponemos de "+this.stock +" Kg de "+this.nombre+" a un precio de "+ this.precio +"$";
   }
 };
-
 
 //articulos
 const malta = new Articulo ("malta", 3000, 2000, 0, 0);
@@ -39,15 +37,15 @@ let seguirComprando = true;
 
 
 //funciones
-const COMPRAF = (precioProducto, cantidadProducto) => (precioProducto * cantidadProducto);
+const COMPRAF = (precioProducto, cantidadProducto) => (precioProducto * cantidadProducto); 
+
 
 //seleccion del articulo
-
-nombreArticulo = prompt("Seleccione el articulo deseado (malta, levadura o lúpulo)");
+nombreArticulo = prompt("Seleccione el articulo deseado (malta, levadura o lúpulo)").toLowerCase();
 
 while (seguirComprando){
-//validacion del producto
 
+//validacion de los productos
   do {
     switch (nombreArticulo) {
       case "malta":
@@ -66,14 +64,13 @@ while (seguirComprando){
       default:
         alert ("Usted ha ingresado mal el nombre del articulo");
           articuloValido = "NV";
-          nombreArticulo = prompt ("Por favor reingrese el articulo");
+          nombreArticulo = prompt ("Por favor reingrese el articulo (malta, levadura o lúpulo)");
         break;}
   } while (articuloValido == "NV");
 
   cantidad = prompt("Ahora seleccione la cantidad");
 
 //validacion de la cantidad
-
   while (isNaN(cantidad) || cantidad <=0) {
     alert("Usted ingresó una cantidad invalida");
     cantidad = prompt("Reingrese la cantidad");
@@ -81,7 +78,6 @@ while (seguirComprando){
 
 
 //comprobacion de stock y validacion de compra
-
   while (hayStock == "NS") {
 
     if (nombreArticulo == "malta" && malta.stock >= cantidad) {
@@ -126,11 +122,10 @@ while (seguirComprando){
   };
 
 //reiniciar o finalizar el bucle para terminar con la compra
-
     seguirComprando = confirm("Desea agregar mas productos a su carrito?");
 
     if (seguirComprando) {
-      nombreArticulo = prompt ("Seleccione otro articulo");
+      nombreArticulo = prompt ("Seleccione otro articulo").toLowerCase();
       hayStock = "NS";
       articuloValido = "V"
     }else {
@@ -141,4 +136,3 @@ while (seguirComprando){
       alert("Gracias por su compra!!, el total de la compra es de "+totalCompra+"$");
       }
     };
-
